@@ -1,0 +1,18 @@
+# 金融 agent 集中配置（密钥在 .env，不在这里）
+
+llm:
+  model: deepseek-chat        # DeepSeek 对话模型
+  temperature: 0              # 研究类任务用确定性输出
+
+embedding:
+  model: text-embedding-v3    # 千问 DashScope embedding
+
+storage:
+  db_path: db/finance.db      # SQLite：结构化数据
+  chroma_path: chroma_db      # Chroma 向量库：语义记忆
+
+goal_loop:
+  max_steps: 12               # 单目标最大循环步数（防失控安全网）
+
+output:
+  disclaimer: "本内容仅供参考，不构成任何投资建议。"

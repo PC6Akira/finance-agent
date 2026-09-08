@@ -21,8 +21,8 @@
 
 ### T2 环境配置
 - [x] 密钥已复制进本项目 `.env`（DeepSeek/千问/Bocha），与 AgentLearn 解耦，删除 AgentLearn 后仍可运行
-- [ ] 建立 `config.yaml` + 配置加载器
-- **验收**：脚本能读到 `DEEPSEEK/QWEN/BOCHA` key，且 `.env` 未被 git 追踪（`git status` 干净）
+- [x] 建立 `config.yaml` + 配置加载器（`src/config.py`）
+- **验收**：脚本能读到 `DEEPSEEK/QWEN/BOCHA` key，且 `.env` 未被 git 追踪 ✅ 通过
 
 ### T3 最小对话
 - [ ] 接 DeepSeek，实现一问一答（纯 LLM，无工具）
