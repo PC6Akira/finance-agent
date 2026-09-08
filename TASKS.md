@@ -9,6 +9,7 @@
 ## 全局设计约束（必须遵守）
 
 - **工具与 loop 解耦**：所有工具独立放 `tools/` 目录，通过**工具注册表**注入 agent loop；loop 本身不 import 任何具体工具。新增工具 = 新建一个 tool 文件 + 注册一行，**不改 loop 代码**。
+- **黑名单代码级硬保障**：🔴 禁止操作由 `src/guards/policy.py`（代码）在工具调用前拦截，**不依赖 markdown/提示词**，防止 LLM 幻觉绕过；`permissions.md` 仅作人类可读镜像。
 
 ---
 
