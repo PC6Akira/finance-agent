@@ -10,6 +10,7 @@
 | [positioning.md](positioning.md) | 项目定位、红线（做什么 / 不做什么） |
 | [tech-stack.md](tech-stack.md) | 技术栈、存储方案、数据源 |
 | [decisions.md](decisions.md) | 决策日志、已确认项、待审核清单 |
+| [../TASKS.md](../TASKS.md) | 功能实现清单（逐条测试通过） |
 
 ## 使用约定
 
