@@ -20,8 +20,9 @@
 - **验收**：`python -c "import langchain, chromadb, akshare, dashscope"` 可正常导入 ✅ 通过（langchain 1.3.14 / chromadb 1.5.9 / akshare 1.18.94）
 
 ### T2 环境配置
-- [ ] 从 `AgentLearn/.env` 迁入密钥，建立 `.env` + `config.yaml`
-- **验收**：脚本能读到 `DEEPSEEK/QWEN/TAVIL` key，且 `.env` 未被 git 追踪（`git status` 干净）
+- [x] 密钥已复制进本项目 `.env`（DeepSeek/千问/Bocha），与 AgentLearn 解耦，删除 AgentLearn 后仍可运行
+- [ ] 建立 `config.yaml` + 配置加载器
+- **验收**：脚本能读到 `DEEPSEEK/QWEN/BOCHA` key，且 `.env` 未被 git 追踪（`git status` 干净）
 
 ### T3 最小对话
 - [ ] 接 DeepSeek，实现一问一答（纯 LLM，无工具）
