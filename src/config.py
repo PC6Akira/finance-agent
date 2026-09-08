@@ -21,6 +21,7 @@ class Settings(BaseModel):
 
     # 模型
     llm_model: str = "deepseek-chat"
+    llm_temperature: float = 0
     embedding_model: str = "text-embedding-v3"
 
     # 存储（相对项目根，已解析为绝对路径）
@@ -53,6 +54,7 @@ def load_settings() -> Settings:
         qwen_api_key=os.getenv("QWEN_API_KEY", ""),
         bocha_api_key=os.getenv("BOCHA_API_KEY", ""),
         llm_model=_get(raw, "llm.model", "deepseek-chat"),
+        llm_temperature=_get(raw, "llm.temperature", 0),
         embedding_model=_get(raw, "embedding.model", "text-embedding-v3"),
         db_path=BASE_DIR / _get(raw, "storage.db_path", "db/finance.db"),
         chroma_path=BASE_DIR / _get(raw, "storage.chroma_path", "chroma_db"),
