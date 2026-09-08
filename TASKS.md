@@ -16,8 +16,8 @@
 ## 阶段 0：可对话的最小骨架
 
 ### T1 项目骨架与依赖
-- [ ] 建立目录结构、`requirements.txt`、安装依赖
-- **验收**：`python -c "import langchain, chromadb"` 可正常导入
+- [x] 建立目录结构、`requirements.txt`、安装依赖
+- **验收**：`python -c "import langchain, chromadb, akshare, dashscope"` 可正常导入 ✅ 通过（langchain 1.3.14 / chromadb 1.5.9 / akshare 1.18.94）
 
 ### T2 环境配置
 - [ ] 从 `AgentLearn/.env` 迁入密钥，建立 `.env` + `config.yaml`

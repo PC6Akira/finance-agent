@@ -13,18 +13,21 @@
 ## 技术栈
 - Python 3.14
 - LangChain + Chroma（向量检索/知识库）
-- DeepSeek（LLM）、千问 DashScope（Embedding）、Tavily（联网搜索）
-- akshare（基金数据源，免费）
+- DeepSeek（LLM）、千问 DashScope（Embedding）、博查 Bocha（通用搜索）
+- akshare（基金数据源 + 财经资讯，免费）
 
-## 目录结构（规划中）
+## 目录结构
 ```
 finance-agent/
-├── .env.example      # 环境变量模板（复制为 .env）
-├── README.md
-├── CLAUDE.md         # 项目约定/红线/架构
-├── db/               # 数据库 schema 与持久化
-├── data_sources/     # 数据源封装（净值/持仓/季报/舆情/公告）
-├── tools/            # Agent 工具集
-├── prompts/          # 系统提示词 / 角色与红线
-└── ...
+├── .env / .env.example   # 环境变量（.env 已 gitignore）
+├── README.md / TASKS.md  # 项目说明 / 功能实现清单
+├── requirements.txt      # 依赖清单
+├── memory/               # 项目记忆（定位/技术栈/决策/权限）
+├── src/                  # agent 引擎（goal loop）
+│   └── guards/           # 黑名单代码级硬保障（policy.py / guard.py）
+├── tools/                # 工具（独立文件，注册表注入，与 loop 解耦）
+├── data_sources/         # 数据源封装（akshare / Bocha）
+├── db/                   # SQLite 持久化
+├── prompts/              # 系统提示词（角色 + 红线）
+└── config/               # 配置（config.yaml）
 ```

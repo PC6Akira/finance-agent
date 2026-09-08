@@ -1,0 +1,24 @@
+# 金融投研 agent 依赖清单（Python 3.14）
+# 安装：python -m venv .venv && .venv/bin/pip install -r requirements.txt
+
+# --- 核心框架 ---
+langchain==1.3.14
+langchain-community==0.4.2
+langchain-deepseek==1.1.0
+langchain-chroma==1.1.0
+langchain-text-splitters==1.1.2
+
+# --- 向量库 ---
+chromadb
+
+# --- Embedding（千问 DashScope）---
+dashscope==1.27.3
+
+# --- 基金数据源（免费，东方财富/天天基金）---
+akshare
+
+# --- 通用搜索（博查 Bocha）---
+requests
+
+# --- 环境变量 ---
+python-dotenv==1.2.2
