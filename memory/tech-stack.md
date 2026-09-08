@@ -6,7 +6,8 @@
 - 框架：LangChain 1.3.x
 - LLM：DeepSeek
 - Embedding：千问 DashScope（text-embedding-v3，默认 1024 维）
-- 联网搜索：Tavily
+- 资讯/舆情/公告：**akshare 财经资讯接口**（东方财富新闻、财联社电报、基金公告，免费免代理）
+- 通用搜索（基金经理访谈等开放式检索）：**博查 Bocha**（国内免代理，有免费额度，待验证）
 - 基金数据源：**akshare**（免费，东方财富/天天基金）—— 待用户最终确认
 
 ## 存储两层（方案 B）
@@ -21,4 +22,4 @@
 
 ## 现有密钥（在 `AgentLearn/.env`，需迁入本项目 `.env`）
 
-- `DEEPSEEK_API_KEY` / `QWEN_API_KEY` / `TAVIL_API_KEY`
+- `DEEPSEEK_API_KEY` / `QWEN_API_KEY` / `BOCHA_API_KEY`（Tavily 已弃用，需代理）
