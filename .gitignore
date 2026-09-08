@@ -1,0 +1,40 @@
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ===== 环境变量与密钥（绝不能提交）=====
+.env
+.env.*
+!.env.example
+
+# ===== 数据库与向量库（二进制/大文件，不入 git）=====
+*.db
+*.sqlite
+*.sqlite3
+db/*.db
+chroma_db/
+vector_store/
+
+# ===== 数据文件（净值/持仓/季报等原始数据，体积大且频繁变化）=====
+data/
+*.parquet
+*.feather
+*.csv
+*.xlsx
+*.jsonl
+!.gitkeep
+
+# ===== 日志 =====
+logs/
+*.log
+
+# ===== IDE / 系统 =====
+.DS_Store
+.vscode/
+.idea/
