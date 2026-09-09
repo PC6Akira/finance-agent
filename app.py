@@ -5,9 +5,12 @@
 from datetime import datetime
 
 import gradio as gr
+import pandas as pd
 import plotly.graph_objects as go
 
 from data_sources import fund as fund_ds
+from data_sources import news as news_ds
+from data_sources import search as search_ds
 from src import backtest, diagnosis, metrics
 from src.loop import run
 
@@ -102,6 +105,40 @@ def render_fund(fund_code: str):
     return nav_fig, industry_fig, holdings_df, risk_md, backtest_fig
 
 
+# --- 数据源测试函数 ---
+
+def _test_nav(fund_code):
+    return fund_ds.get_fund_nav(fund_code.strip())
+
+
+def _test_holdings(fund_code):
+    return fund_ds.get_fund_holdings(fund_code.strip(), YEAR)
+
+
+def _test_industry(fund_code):
+    return fund_ds.get_fund_industry_allocation(fund_code.strip(), YEAR)
+
+
+def _test_reports(fund_code):
+    return fund_ds.get_fund_reports(fund_code.strip())
+
+
+def _test_cls_news():
+    return news_ds.get_cls_news()[["标题", "发布日期", "发布时间"]]
+
+
+def _test_personnel(fund_code):
+    return news_ds.get_fund_personnel_announcements(fund_code.strip())
+
+
+def _test_dividend(fund_code):
+    return news_ds.get_fund_dividend_announcements(fund_code.strip())
+
+
+def _test_search(query):
+    return pd.DataFrame(search_ds.bocha_search(query, 5))
+
+
 def chat_fn(message, history):
     return run(message)
 
@@ -125,6 +162,38 @@ with gr.Blocks(title="基金投研 Agent 测试台") as demo:
         backtest_plot = gr.Plot(label="回测")
         btn.click(render_fund, inputs=code,
                   outputs=[nav_plot, industry_plot, holdings_table, risk_md, backtest_plot])
+
+    with gr.Tab("数据源测试"):
+        gr.Markdown("#### 基金数据源（akshare）")
+        with gr.Row():
+            code2 = gr.Textbox(label="基金代码", value="110022", scale=3)
+            btn_nav = gr.Button("净值", scale=1)
+            btn_hold = gr.Button("持仓", scale=1)
+            btn_ind = gr.Button("行业配置", scale=1)
+            btn_rep = gr.Button("报告公告", scale=1)
+        fund_out = gr.Dataframe(label="基金数据")
+
+        gr.Markdown("#### 资讯数据源（akshare）")
+        with gr.Row():
+            btn_cls = gr.Button("财联社舆情", scale=1)
+            btn_pers = gr.Button("人事公告", scale=1)
+            btn_div = gr.Button("分红公告", scale=1)
+        news_out = gr.Dataframe(label="资讯数据")
+
+        gr.Markdown("#### 搜索数据源（博查 Bocha）")
+        with gr.Row():
+            query = gr.Textbox(label="搜索关键词", value="基金经理访谈", scale=3)
+            btn_search = gr.Button("搜索", scale=1)
+        search_out = gr.Dataframe(label="搜索结果")
+
+        btn_nav.click(_test_nav, inputs=code2, outputs=fund_out)
+        btn_hold.click(_test_holdings, inputs=code2, outputs=fund_out)
+        btn_ind.click(_test_industry, inputs=code2, outputs=fund_out)
+        btn_rep.click(_test_reports, inputs=code2, outputs=fund_out)
+        btn_cls.click(_test_cls_news, outputs=news_out)
+        btn_pers.click(_test_personnel, inputs=code2, outputs=news_out)
+        btn_div.click(_test_dividend, inputs=code2, outputs=news_out)
+        btn_search.click(_test_search, inputs=query, outputs=search_out)
 
 
 if __name__ == "__main__":
