@@ -12,6 +12,7 @@ from src.config import settings
 from src.guards.checks import register_guard_hooks
 from src.hooks import trigger_hooks
 from src.llm import get_llm
+from src.output import finalize
 from tools.registry import call_tool, list_tools
 
 PROMPT_PATH = Path(__file__).resolve().parent.parent / "prompts" / "system.md"
@@ -51,7 +52,7 @@ def run(goal: str, ask_user=input) -> str:
         messages.append(resp)
 
         if not resp.tool_calls:  # ① 终止：模型给出最终回答
-            return resp.content + "\n\n" + settings.disclaimer
+            return finalize(resp.content)
 
         for tc in resp.tool_calls:
             content = _handle_tool_call(tc, ask_user)
@@ -60,7 +61,7 @@ def run(goal: str, ask_user=input) -> str:
     # ④ 达最大步数：强制汇总已有信息
     messages.append(HumanMessage(content="已达到最大步数，请基于已有信息给出最终汇总。"))
     final = llm.invoke(messages)
-    return final.content + "\n\n" + settings.disclaimer
+    return finalize(final.content)
 
 
 def main() -> None:

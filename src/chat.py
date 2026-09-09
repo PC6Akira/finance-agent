@@ -7,11 +7,12 @@
 import sys
 
 from src.llm import get_llm
+from src.output import finalize
 
 
 def chat(prompt: str) -> str:
-    """单轮对话，返回文本回复。"""
-    return get_llm().invoke(prompt).content
+    """单轮对话，返回文本回复（含免责声明）。"""
+    return finalize(get_llm().invoke(prompt).content)
 
 
 def main() -> None:
@@ -31,7 +32,7 @@ def main() -> None:
             break
         if not user_input:
             continue
-        print("Agent：", llm.invoke(user_input).content)
+        print("Agent：", finalize(llm.invoke(user_input).content))
 
 
 if __name__ == "__main__":
