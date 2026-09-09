@@ -17,5 +17,5 @@ def get_finance_news() -> str:
 def get_fund_personnel_announcements(fund_code: str) -> str:
     """查询基金经理变更等人事公告。fund_code: 6 位基金代码。"""
     df = news_ds.get_fund_personnel_announcements(fund_code)
-    sub = df[["公告标题", "公告日期"]].head(10)
+    sub = df[["公告标题", "公告日期"]].sort_values("公告日期", ascending=False).head(10)
     return f"人事公告（最新 10 条）：\n{df_to_str(sub, 10)}"

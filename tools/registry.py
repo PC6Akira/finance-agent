@@ -13,6 +13,7 @@ from tools.fund_tools import (
 from tools.backtest_tools import run_backtest
 from tools.compare_tools import compare_funds
 from tools.diagnose_tools import diagnose_fund
+from tools.report_tools import report_fund
 from tools.news_tools import get_finance_news, get_fund_personnel_announcements
 from tools.search_tools import search_web
 
@@ -29,6 +30,7 @@ _TOOLS: dict[str, BaseTool] = {
         compare_funds,
         diagnose_fund,
         run_backtest,
+        report_fund,
     ]
 }
 

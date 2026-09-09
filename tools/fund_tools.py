@@ -34,5 +34,5 @@ def get_fund_industry_allocation(fund_code: str, year: str = _DEFAULT_YEAR) -> s
 def get_fund_reports(fund_code: str) -> str:
     """查询基金的定期报告（季报/年报）公告列表。fund_code: 6 位基金代码。"""
     df = fund_ds.get_fund_reports(fund_code)
-    sub = df[["公告标题", "公告日期"]].head(10)
+    sub = df[["公告标题", "公告日期"]].sort_values("公告日期", ascending=False).head(10)
     return f"定期报告公告（最新 10 条）：\n{df_to_str(sub, 10)}"
