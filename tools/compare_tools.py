@@ -1,4 +1,6 @@
 """基金对比工具。"""
+from datetime import datetime
+
 import pandas as pd
 from langchain_core.tools import tool
 
@@ -18,7 +20,7 @@ def compare_funds(fund_codes: str) -> str:
     for c in codes:
         try:
             nav = fund_ds.get_fund_nav(c)
-            hold = fund_ds.get_fund_holdings(c, "2024")
+            hold = fund_ds.get_fund_holdings(c, str(datetime.now().year))
         except Exception as e:
             return f"拉取基金 {c} 数据失败：{e}"
         navs[c], holdings[c] = nav, hold
