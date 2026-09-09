@@ -25,3 +25,7 @@ python-dotenv==1.2.2
 
 # --- 测试 ---
 pytest
+
+# --- 图形化界面 ---
+gradio
+plotly
