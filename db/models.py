@@ -73,3 +73,34 @@ class BacktestConfig(Base):
     name = Column(String)
     config = Column(Text)                            # JSON 字符串
     created_at = Column(String)
+
+
+class User(Base):
+    """用户账号。"""
+    __tablename__ = "users"
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    username = Column(String, unique=True)
+    password_hash = Column(String)
+    created_at = Column(String)
+
+
+class UserHolding(Base):
+    """用户持仓。"""
+    __tablename__ = "user_holdings"
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    username = Column(String, index=True)
+    fund_code = Column(String)
+    fund_name = Column(String, nullable=True)
+    amount = Column(Float)                            # 持有金额
+    cost = Column(Float, nullable=True)               # 成本（可空）
+    created_at = Column(String)
+
+
+class Message(Base):
+    """对话历史。"""
+    __tablename__ = "messages"
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    username = Column(String, index=True)
+    role = Column(String)                             # user / assistant
+    content = Column(Text)
+    created_at = Column(String)

@@ -29,3 +29,6 @@ pytest
 # --- 图形化界面 ---
 gradio
 plotly
+
+# --- 认证 ---
+bcrypt

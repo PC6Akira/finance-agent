@@ -6,7 +6,7 @@
 import sys
 from pathlib import Path
 
-from langchain_core.messages import HumanMessage, SystemMessage, ToolMessage
+from langchain_core.messages import AIMessage, HumanMessage, SystemMessage, ToolMessage
 
 from src.config import settings
 from src.guards.checks import register_guard_hooks
@@ -48,15 +48,15 @@ def _handle_tool_call(tc: dict, ask_user) -> str:
     return _call_tool_safe(tc["name"], tc["args"])  # 🟢 放行
 
 
-def run(goal: str, ask_user=input) -> str:
-    """执行一个目标，返回带免责声明的最终结果。"""
+def run(goal: str, history: list[tuple[str, str]] | None = None, ask_user=input) -> str:
+    """执行一个目标（可带多轮对话历史），返回带免责声明的最终结果。"""
     register_guard_hooks()
     logger.info(f"任务开始：{goal[:80]}")
 
-    messages = [
-        SystemMessage(_load_system_prompt()),
-        HumanMessage(goal),
-    ]
+    messages = [SystemMessage(_load_system_prompt())]
+    for role, content in (history or []):
+        messages.append(HumanMessage(content) if role == "user" else AIMessage(content))
+    messages.append(HumanMessage(goal))
     llm = get_llm().bind_tools(list_tools())
 
     for _ in range(settings.max_steps):
