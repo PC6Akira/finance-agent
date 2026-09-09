@@ -10,6 +10,7 @@ from tools.fund_tools import (
     get_fund_nav,
     get_fund_reports,
 )
+from tools.compare_tools import compare_funds
 from tools.news_tools import get_finance_news, get_fund_personnel_announcements
 from tools.search_tools import search_web
 
@@ -23,6 +24,7 @@ _TOOLS: dict[str, BaseTool] = {
         get_finance_news,
         get_fund_personnel_announcements,
         search_web,
+        compare_funds,
     ]
 }
 
