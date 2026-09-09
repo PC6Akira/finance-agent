@@ -2,10 +2,12 @@
 import requests
 
 from src.config import settings
+from src.retry import retry_network
 
 _URL = "https://api.bochaai.com/v1/web-search"
 
 
+@retry_network
 def bocha_search(query: str, count: int = 5) -> list[dict]:
     """按关键词搜索，返回 [{title, url, summary, site, date}]。"""
     headers = {
