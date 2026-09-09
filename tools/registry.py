@@ -4,11 +4,26 @@
 """
 from langchain_core.tools import BaseTool
 
-from tools.placeholders import get_mock_fund_profile, get_mock_fund_risk
+from tools.fund_tools import (
+    get_fund_holdings,
+    get_fund_industry_allocation,
+    get_fund_nav,
+    get_fund_reports,
+)
+from tools.news_tools import get_finance_news, get_fund_personnel_announcements
+from tools.search_tools import search_web
 
 _TOOLS: dict[str, BaseTool] = {
     t.name: t
-    for t in [get_mock_fund_profile, get_mock_fund_risk]
+    for t in [
+        get_fund_nav,
+        get_fund_holdings,
+        get_fund_industry_allocation,
+        get_fund_reports,
+        get_finance_news,
+        get_fund_personnel_announcements,
+        search_web,
+    ]
 }
 
 

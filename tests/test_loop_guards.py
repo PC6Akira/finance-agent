@@ -37,9 +37,15 @@ def test_permission_granted():
 
 
 def test_allow():
-    """🟢 放行 → 调用真实 mock 工具，拿到数据。"""
-    out = _handle_tool_call(_tc("get_mock_fund_profile", {"fund_code": "110022"}), ask_user=lambda _: "n")
-    assert "易方达消费" in out, f"放行后应调用工具，实际：{out}"
+    """🟢 放行 → 调用注册表 call_tool（monkeypatch 避免网络依赖）。"""
+    import src.loop as loop_mod
+    orig = loop_mod.call_tool
+    loop_mod.call_tool = lambda name, args: f"CALLED:{name}"
+    try:
+        out = _handle_tool_call(_tc("any_tool", {"x": 1}), ask_user=lambda _: "n")
+        assert out == "CALLED:any_tool", f"放行后应调用 call_tool，实际：{out}"
+    finally:
+        loop_mod.call_tool = orig
 
 
 if __name__ == "__main__":
