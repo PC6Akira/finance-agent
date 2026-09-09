@@ -94,8 +94,8 @@
 - **验收**：出错可追溯（日志里能查到失败原因）✅ 通过
 
 ### T15 测试
-- [ ] 数据源 mock、规则库单测
-- **验收**：`pytest` 全绿
+- [x] pytest 配置（`pytest.ini`）+ 6 个测试文件（loop 分支 / 提示词 / 输出合规 / metrics / diagnosis / backtest）
+- **验收**：`pytest` 全绿 ✅ 20 passed
 
 ### T16 合规 / 免责声明
 - [x] 统一免责声明注入 + 去重（`src/output.py::finalize`，loop/chat 双路径接入）
