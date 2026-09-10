@@ -14,6 +14,7 @@ from src.hooks import trigger_hooks
 from src.llm import get_llm
 from src.logger import get_logger
 from src.output import finalize
+from src.verify import verify_and_correct
 from tools.registry import call_tool, list_tools
 
 logger = get_logger(__name__)
@@ -59,24 +60,26 @@ def run(goal: str, history: list[tuple[str, str]] | None = None, ask_user=input)
     messages.append(HumanMessage(goal))
     llm = get_llm().bind_tools(list_tools())
 
+    tool_outputs = []  # 本轮工具返回，供事实校验
     for _ in range(settings.max_steps):
         resp = llm.invoke(messages)
         messages.append(resp)
 
         if not resp.tool_calls:  # ① 终止：模型给出最终回答
             logger.info("任务完成（模型给出最终回答）")
-            return finalize(resp.content)
+            return finalize(verify_and_correct(resp.content, tool_outputs))
 
         for tc in resp.tool_calls:
             logger.info(f"调用工具：{tc['name']}")
             content = _handle_tool_call(tc, ask_user)
+            tool_outputs.append((tc["name"], content))
             messages.append(ToolMessage(content=content, tool_call_id=tc["id"]))
 
     # ④ 达最大步数：强制汇总已有信息
     logger.warning(f"达到最大步数 {settings.max_steps}，强制汇总")
     messages.append(HumanMessage(content="已达到最大步数，请基于已有信息给出最终汇总。"))
     final = llm.invoke(messages)
-    return finalize(final.content)
+    return finalize(verify_and_correct(final.content, tool_outputs))
 
 
 def main() -> None:
