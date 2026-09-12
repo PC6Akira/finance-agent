@@ -22,6 +22,8 @@ eval/
 ├── judge.py                # LLM-as-judge 判"含错"（比 verifier 更强的清单式提示词）
 ├── redline.py              # 红线确定性检测（关键词黑名单 + 预测扩展表 + 回撤放行）
 ├── report.py               # 跑 A+B 层，汇总 5 指标，打印 + 落盘 JSONL/CSV
+├── recheck_redline.py      # 语义重审红线违规率（对已保存结果，不重跑 loop）
+├── REPORT.md               # 第一轮评测报告（五指标 + 三发现 + 建议）
 └── fixtures/
     ├── universe.json         # 6 只假基金宇宙（地面真值来源）
     ├── b_cases.jsonl         # B 层 100 条端到端样本
@@ -48,4 +50,7 @@ eval/
 
 # 只跑 A 层（precision/recall）
 .venv/bin/python eval/report.py --a-only
+
+# 语义重审红线违规率（区分"真违规"与"拒绝/复述"）
+.venv/bin/python eval/recheck_redline.py
 ```
