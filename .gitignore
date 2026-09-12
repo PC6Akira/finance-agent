@@ -28,6 +28,7 @@ data/
 *.csv
 *.xlsx
 *.jsonl
+!eval/fixtures/*.jsonl
 !.gitkeep
 
 # ===== 日志 =====
