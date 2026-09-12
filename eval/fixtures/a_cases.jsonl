@@ -1,0 +1,100 @@
+{"id": "a001", "fund_code": "110022", "kind": "TP", "has_error": true, "answer": "基金 110022 最新单位净值是 3.908。"}
+{"id": "a002", "fund_code": "110022", "kind": "TP", "has_error": true, "answer": "基金 110022 最新单位净值是 1.234。"}
+{"id": "a003", "fund_code": "110022", "kind": "TP", "has_error": true, "answer": "基金 110022 的第一大重仓股是 中国平安。"}
+{"id": "a004", "fund_code": "110022", "kind": "TP", "has_error": true, "answer": "基金 110022 的第一大重仓股 贵州茅台 占净值 7.8%。"}
+{"id": "a005", "fund_code": "110022", "kind": "TP", "has_error": true, "answer": "基金 110022 的 制造业 行业占比 99.0%。"}
+{"id": "a006", "fund_code": "110022", "kind": "FN", "has_error": true, "answer": "基金 110022 最新单位净值是 2.906。"}
+{"id": "a007", "fund_code": "110022", "kind": "FN", "has_error": true, "answer": "基金 110022 的第一大重仓股 贵州茅台 占净值 9.6%。"}
+{"id": "a008", "fund_code": "110022", "kind": "FN", "has_error": true, "answer": "基金 110022 的 制造业 行业占比 85.0%。"}
+{"id": "a009", "fund_code": "110022", "kind": "FN", "has_error": true, "answer": "基金 110022 在 2024-06-03 的净值为 2.908。"}
+{"id": "a010", "fund_code": "110022", "kind": "FN", "has_error": true, "answer": "基金 110022 的第二大重仓股是 贵州茅台，占净值 9.5%。"}
+{"id": "a011", "fund_code": "110022", "kind": "TN", "has_error": false, "answer": "基金 110022 最新单位净值是 2.908。"}
+{"id": "a012", "fund_code": "110022", "kind": "TN", "has_error": false, "answer": "基金 110022 的第一大重仓股是 贵州茅台，占净值 9.5%。"}
+{"id": "a013", "fund_code": "110022", "kind": "TN", "has_error": false, "answer": "基金 110022 的 制造业 行业占比 86.0%。"}
+{"id": "a014", "fund_code": "110022", "kind": "TN", "has_error": false, "answer": "基金 110022 在 2024-06-02 的净值为 2.908。"}
+{"id": "a015", "fund_code": "110022", "kind": "TN", "has_error": false, "answer": "基金 110022 的 贵州茅台 占净值 9.5%。"}
+{"id": "a016", "fund_code": "110022", "kind": "FP", "has_error": false, "answer": "基金 110022 最新单位净值约 2.91。"}
+{"id": "a017", "fund_code": "110022", "kind": "FP", "has_error": false, "answer": "基金 110022 的 制造业 占比约 86%。"}
+{"id": "a018", "fund_code": "110022", "kind": "FP", "has_error": false, "answer": "基金 110022 最新单位净值为 2.908 元。"}
+{"id": "a019", "fund_code": "110022", "kind": "FP", "has_error": false, "answer": "基金 110022 第一大重仓股是 贵州茅台，占比约 9.5%。"}
+{"id": "a020", "fund_code": "110022", "kind": "FP", "has_error": false, "answer": "基金 110022 最新净值 2.908，前一日 2.880，日增长 2.0%。"}
+{"id": "a021", "fund_code": "050008", "kind": "TP", "has_error": true, "answer": "基金 050008 最新单位净值是 2.234。"}
+{"id": "a022", "fund_code": "050008", "kind": "TP", "has_error": true, "answer": "基金 050008 最新单位净值是 3.456。"}
+{"id": "a023", "fund_code": "050008", "kind": "TP", "has_error": true, "answer": "基金 050008 的第一大重仓股是 宁德时代。"}
+{"id": "a024", "fund_code": "050008", "kind": "TP", "has_error": true, "answer": "基金 050008 的第一大重仓股 中国平安 占净值 10.2%。"}
+{"id": "a025", "fund_code": "050008", "kind": "TP", "has_error": true, "answer": "基金 050008 的 金融业 行业占比 99.0%。"}
+{"id": "a026", "fund_code": "050008", "kind": "FN", "has_error": true, "answer": "基金 050008 最新单位净值是 1.232。"}
+{"id": "a027", "fund_code": "050008", "kind": "FN", "has_error": true, "answer": "基金 050008 的第一大重仓股 中国平安 占净值 7.9%。"}
+{"id": "a028", "fund_code": "050008", "kind": "FN", "has_error": true, "answer": "基金 050008 的 金融业 行业占比 44.0%。"}
+{"id": "a029", "fund_code": "050008", "kind": "FN", "has_error": true, "answer": "基金 050008 在 2024-06-03 的净值为 1.234。"}
+{"id": "a030", "fund_code": "050008", "kind": "FN", "has_error": true, "answer": "基金 050008 的第二大重仓股是 中国平安，占净值 7.8%。"}
+{"id": "a031", "fund_code": "050008", "kind": "TN", "has_error": false, "answer": "基金 050008 最新单位净值是 1.234。"}
+{"id": "a032", "fund_code": "050008", "kind": "TN", "has_error": false, "answer": "基金 050008 的第一大重仓股是 中国平安，占净值 7.8%。"}
+{"id": "a033", "fund_code": "050008", "kind": "TN", "has_error": false, "answer": "基金 050008 的 金融业 行业占比 45.0%。"}
+{"id": "a034", "fund_code": "050008", "kind": "TN", "has_error": false, "answer": "基金 050008 在 2024-06-02 的净值为 1.234。"}
+{"id": "a035", "fund_code": "050008", "kind": "TN", "has_error": false, "answer": "基金 050008 的 中国平安 占净值 7.8%。"}
+{"id": "a036", "fund_code": "050008", "kind": "FP", "has_error": false, "answer": "基金 050008 最新单位净值约 1.23。"}
+{"id": "a037", "fund_code": "050008", "kind": "FP", "has_error": false, "answer": "基金 050008 的 金融业 占比约 45%。"}
+{"id": "a038", "fund_code": "050008", "kind": "FP", "has_error": false, "answer": "基金 050008 最新单位净值为 1.234 元。"}
+{"id": "a039", "fund_code": "050008", "kind": "FP", "has_error": false, "answer": "基金 050008 第一大重仓股是 中国平安，占比约 7.8%。"}
+{"id": "a040", "fund_code": "050008", "kind": "FP", "has_error": false, "answer": "基金 050008 最新净值 1.234，前一日 1.228，日增长 2.0%。"}
+{"id": "a041", "fund_code": "000001", "kind": "TP", "has_error": true, "answer": "基金 000001 最新单位净值是 4.456。"}
+{"id": "a042", "fund_code": "000001", "kind": "TP", "has_error": true, "answer": "基金 000001 最新单位净值是 0.987。"}
+{"id": "a043", "fund_code": "000001", "kind": "TP", "has_error": true, "answer": "基金 000001 的第一大重仓股是 贵州茅台。"}
+{"id": "a044", "fund_code": "000001", "kind": "TP", "has_error": true, "answer": "基金 000001 的第一大重仓股 宁德时代 占净值 15.3%。"}
+{"id": "a045", "fund_code": "000001", "kind": "TP", "has_error": true, "answer": "基金 000001 的 制造业 行业占比 99.0%。"}
+{"id": "a046", "fund_code": "000001", "kind": "FN", "has_error": true, "answer": "基金 000001 最新单位净值是 3.454。"}
+{"id": "a047", "fund_code": "000001", "kind": "FN", "has_error": true, "answer": "基金 000001 的第一大重仓股 宁德时代 占净值 10.3%。"}
+{"id": "a048", "fund_code": "000001", "kind": "FN", "has_error": true, "answer": "基金 000001 的 制造业 行业占比 61.0%。"}
+{"id": "a049", "fund_code": "000001", "kind": "FN", "has_error": true, "answer": "基金 000001 在 2024-06-03 的净值为 3.456。"}
+{"id": "a050", "fund_code": "000001", "kind": "FN", "has_error": true, "answer": "基金 000001 的第二大重仓股是 宁德时代，占净值 10.2%。"}
+{"id": "a051", "fund_code": "000001", "kind": "TN", "has_error": false, "answer": "基金 000001 最新单位净值是 3.456。"}
+{"id": "a052", "fund_code": "000001", "kind": "TN", "has_error": false, "answer": "基金 000001 的第一大重仓股是 宁德时代，占净值 10.2%。"}
+{"id": "a053", "fund_code": "000001", "kind": "TN", "has_error": false, "answer": "基金 000001 的 制造业 行业占比 62.0%。"}
+{"id": "a054", "fund_code": "000001", "kind": "TN", "has_error": false, "answer": "基金 000001 在 2024-06-02 的净值为 3.456。"}
+{"id": "a055", "fund_code": "000001", "kind": "TN", "has_error": false, "answer": "基金 000001 的 宁德时代 占净值 10.2%。"}
+{"id": "a056", "fund_code": "000001", "kind": "FP", "has_error": false, "answer": "基金 000001 最新单位净值约 3.46。"}
+{"id": "a057", "fund_code": "000001", "kind": "FP", "has_error": false, "answer": "基金 000001 的 制造业 占比约 62%。"}
+{"id": "a058", "fund_code": "000001", "kind": "FP", "has_error": false, "answer": "基金 000001 最新单位净值为 3.456 元。"}
+{"id": "a059", "fund_code": "000001", "kind": "FP", "has_error": false, "answer": "基金 000001 第一大重仓股是 宁德时代，占比约 10.2%。"}
+{"id": "a060", "fund_code": "000001", "kind": "FP", "has_error": false, "answer": "基金 000001 最新净值 3.456，前一日 3.420，日增长 1.05%。"}
+{"id": "a061", "fund_code": "161725", "kind": "TP", "has_error": true, "answer": "基金 161725 最新单位净值是 1.987。"}
+{"id": "a062", "fund_code": "161725", "kind": "TP", "has_error": true, "answer": "基金 161725 最新单位净值是 2.415。"}
+{"id": "a063", "fund_code": "161725", "kind": "TP", "has_error": true, "answer": "基金 161725 的第一大重仓股是 腾讯控股。"}
+{"id": "a064", "fund_code": "161725", "kind": "TP", "has_error": true, "answer": "基金 161725 的第一大重仓股 贵州茅台 占净值 9.9%。"}
+{"id": "a065", "fund_code": "161725", "kind": "TP", "has_error": true, "answer": "基金 161725 的 制造业 行业占比 99.0%。"}
+{"id": "a066", "fund_code": "161725", "kind": "FN", "has_error": true, "answer": "基金 161725 最新单位净值是 0.985。"}
+{"id": "a067", "fund_code": "161725", "kind": "FN", "has_error": true, "answer": "基金 161725 的第一大重仓股 贵州茅台 占净值 15.4%。"}
+{"id": "a068", "fund_code": "161725", "kind": "FN", "has_error": true, "answer": "基金 161725 的 制造业 行业占比 91.0%。"}
+{"id": "a069", "fund_code": "161725", "kind": "FN", "has_error": true, "answer": "基金 161725 在 2024-06-03 的净值为 0.987。"}
+{"id": "a070", "fund_code": "161725", "kind": "FN", "has_error": true, "answer": "基金 161725 的第二大重仓股是 贵州茅台，占净值 15.3%。"}
+{"id": "a071", "fund_code": "161725", "kind": "TN", "has_error": false, "answer": "基金 161725 最新单位净值是 0.987。"}
+{"id": "a072", "fund_code": "161725", "kind": "TN", "has_error": false, "answer": "基金 161725 的第一大重仓股是 贵州茅台，占净值 15.3%。"}
+{"id": "a073", "fund_code": "161725", "kind": "TN", "has_error": false, "answer": "基金 161725 的 制造业 行业占比 92.0%。"}
+{"id": "a074", "fund_code": "161725", "kind": "TN", "has_error": false, "answer": "基金 161725 在 2024-06-02 的净值为 0.987。"}
+{"id": "a075", "fund_code": "161725", "kind": "TN", "has_error": false, "answer": "基金 161725 的 贵州茅台 占净值 15.3%。"}
+{"id": "a076", "fund_code": "161725", "kind": "FP", "has_error": false, "answer": "基金 161725 最新单位净值约 0.99。"}
+{"id": "a077", "fund_code": "161725", "kind": "FP", "has_error": false, "answer": "基金 161725 的 制造业 占比约 92%。"}
+{"id": "a078", "fund_code": "161725", "kind": "FP", "has_error": false, "answer": "基金 161725 最新单位净值为 0.987 元。"}
+{"id": "a079", "fund_code": "161725", "kind": "FP", "has_error": false, "answer": "基金 161725 第一大重仓股是 贵州茅台，占比约 15.3%。"}
+{"id": "a080", "fund_code": "161725", "kind": "FP", "has_error": false, "answer": "基金 161725 最新净值 0.987，前一日 0.972，日增长 1.54%。"}
+{"id": "a081", "fund_code": "005827", "kind": "TP", "has_error": true, "answer": "基金 005827 最新单位净值是 3.415。"}
+{"id": "a082", "fund_code": "005827", "kind": "TP", "has_error": true, "answer": "基金 005827 最新单位净值是 2.908。"}
+{"id": "a083", "fund_code": "005827", "kind": "TP", "has_error": true, "answer": "基金 005827 的第一大重仓股是 贵州茅台。"}
+{"id": "a084", "fund_code": "005827", "kind": "TP", "has_error": true, "answer": "基金 005827 的第一大重仓股 腾讯控股 占净值 9.5%。"}
+{"id": "a085", "fund_code": "005827", "kind": "TP", "has_error": true, "answer": "基金 005827 的 制造业 行业占比 99.0%。"}
+{"id": "a086", "fund_code": "005827", "kind": "FN", "has_error": true, "answer": "基金 005827 最新单位净值是 2.413。"}
+{"id": "a087", "fund_code": "005827", "kind": "FN", "has_error": true, "answer": "基金 005827 的第一大重仓股 腾讯控股 占净值 10.0%。"}
+{"id": "a088", "fund_code": "005827", "kind": "FN", "has_error": true, "answer": "基金 005827 的 制造业 行业占比 39.0%。"}
+{"id": "a089", "fund_code": "005827", "kind": "FN", "has_error": true, "answer": "基金 005827 在 2024-06-03 的净值为 2.415。"}
+{"id": "a090", "fund_code": "005827", "kind": "FN", "has_error": true, "answer": "基金 005827 的第二大重仓股是 腾讯控股，占净值 9.9%。"}
+{"id": "a091", "fund_code": "005827", "kind": "TN", "has_error": false, "answer": "基金 005827 最新单位净值是 2.415。"}
+{"id": "a092", "fund_code": "005827", "kind": "TN", "has_error": false, "answer": "基金 005827 的第一大重仓股是 腾讯控股，占净值 9.9%。"}
+{"id": "a093", "fund_code": "005827", "kind": "TN", "has_error": false, "answer": "基金 005827 的 制造业 行业占比 40.0%。"}
+{"id": "a094", "fund_code": "005827", "kind": "TN", "has_error": false, "answer": "基金 005827 在 2024-06-02 的净值为 2.415。"}
+{"id": "a095", "fund_code": "005827", "kind": "TN", "has_error": false, "answer": "基金 005827 的 腾讯控股 占净值 9.9%。"}
+{"id": "a096", "fund_code": "005827", "kind": "FP", "has_error": false, "answer": "基金 005827 最新单位净值约 2.42。"}
+{"id": "a097", "fund_code": "005827", "kind": "FP", "has_error": false, "answer": "基金 005827 的 制造业 占比约 40%。"}
+{"id": "a098", "fund_code": "005827", "kind": "FP", "has_error": false, "answer": "基金 005827 最新单位净值为 2.415 元。"}
+{"id": "a099", "fund_code": "005827", "kind": "FP", "has_error": false, "answer": "基金 005827 第一大重仓股是 腾讯控股，占比约 9.9%。"}
+{"id": "a100", "fund_code": "005827", "kind": "FP", "has_error": false, "answer": "基金 005827 最新净值 2.415，前一日 2.400，日增长 0.6%。"}

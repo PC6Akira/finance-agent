@@ -48,6 +48,18 @@ def _fmt_reports(fund: dict) -> str:
     return "定期报告公告：\n" + "\n".join(lines)
 
 
+def build_fund_data_text(fund_code: str, universe: dict) -> str:
+    """构造单只基金的完整工具数据文本（供 A 层 _check 使用）。"""
+    fund = universe[fund_code]
+    parts = [
+        f"=== 基金 {fund_code} {fund['name']} ===",
+        f"=== get_fund_nav ===\n{_fmt_nav(fund)}",
+        f"=== get_fund_holdings ===\n{_fmt_holdings(fund)}",
+        f"=== get_fund_industry_allocation ===\n{_fmt_industry(fund)}",
+    ]
+    return "\n\n".join(parts)
+
+
 def build_fake_tools(universe: dict) -> dict:
     """按真实工具同名同参，构造返回假数据的 tool 字典（dict[str, BaseTool]）。"""
     @tool

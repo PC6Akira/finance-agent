@@ -18,13 +18,14 @@
 ```
 eval/
 ├── harness.py              # 注入假工具 → 跑 run() → 收集输出 + 工具调用
+├── gen_a_cases.py          # 生成 A 层构造样本（确定性，数值取自假宇宙）
 ├── judge.py                # LLM-as-judge 判"含错"（待建）
 ├── redline.py              # 红线确定性检测（待建）
 ├── report.py               # 汇总 5 指标（待建）
 └── fixtures/
     ├── universe.json         # 6 只假基金宇宙（地面真值来源）
     ├── b_cases.jsonl         # B 层 100 条端到端样本
-    └── a_cases.jsonl         # A 层构造样本（待建）
+    └── a_cases.jsonl         # A 层 100 条构造样本（gen_a_cases.py 生成）
 ```
 
 ## 怎么跑
@@ -35,6 +36,9 @@ eval/
 
 # 校验样本（不调 LLM）：看条数、分类统计、查重复 id
 .venv/bin/python eval/harness.py --check-cases eval/fixtures/b_cases.jsonl
+
+# 重新生成 A 层构造样本（改假宇宙后需重跑）
+.venv/bin/python eval/gen_a_cases.py
 
 # 全量评测（judge/redline 就绪后接入，会调 DeepSeek）
 .venv/bin/python eval/harness.py --cases eval/fixtures/b_cases.jsonl --out eval/results.jsonl
