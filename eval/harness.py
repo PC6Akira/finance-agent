@@ -23,6 +23,11 @@ def load_universe(path: str | Path) -> dict:
     return json.loads(Path(path).read_text(encoding="utf-8"))
 
 
+def load_cases(path: str | Path) -> list[dict]:
+    """读取 JSONL 样本：每行 {id, category, question}。"""
+    return [json.loads(line) for line in Path(path).read_text(encoding="utf-8").splitlines() if line.strip()]
+
+
 def _fmt_nav(fund: dict) -> str:
     lines = [f"{r['date']} 净值 {r['nav']} 日增长 {r['daily']}%" for r in fund["nav"]]
     return "单位净值走势：\n" + "\n".join(lines)
@@ -111,7 +116,7 @@ def run_cases(cases: list[dict], universe: dict, enable_verifier: bool = True) -
 # ---------- 自检（不调 LLM、不联网） ----------
 
 def self_test() -> None:
-    universe = load_universe(Path(__file__).parent / "fixtures" / "sample_universe.json")
+    universe = load_universe(Path(__file__).parent / "fixtures" / "universe.json")
     fake_tools = build_fake_tools(universe)
     assert set(fake_tools) == {
         "get_fund_nav", "get_fund_holdings", "get_fund_industry_allocation", "get_fund_reports",
@@ -135,7 +140,18 @@ def main() -> None:
     if "--self-test" in args:
         self_test()
         return
-    print("全量跑在样本集就绪后接入；先用 --self-test 验证注入机制。")
+    if "--check-cases" in args:
+        from collections import Counter
+        i = args.index("--check-cases")
+        cases = load_cases(args[i + 1])
+        print(f"样本数：{len(cases)}")
+        for cat, n in sorted(Counter(c["category"] for c in cases).items()):
+            print(f"  {cat}: {n}")
+        ids = [c["id"] for c in cases]
+        assert len(ids) == len(set(ids)), "存在重复 id"
+        print("✅ 样本校验通过：无重复 id，分类统计如上")
+        return
+    print("用法：--self-test 或 --check-cases PATH（--cases 全量跑在 judge/redline 就绪后接入）")
 
 
 if __name__ == "__main__":

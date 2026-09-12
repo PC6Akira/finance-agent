@@ -22,8 +22,8 @@ eval/
 ├── redline.py              # 红线确定性检测（待建）
 ├── report.py               # 汇总 5 指标（待建）
 └── fixtures/
-    ├── sample_universe.json  # 样例假基金宇宙（自检用）
-    ├── b_cases.jsonl         # B 层 100 条端到端样本（待建）
+    ├── universe.json         # 6 只假基金宇宙（地面真值来源）
+    ├── b_cases.jsonl         # B 层 100 条端到端样本
     └── a_cases.jsonl         # A 层构造样本（待建）
 ```
 
@@ -33,6 +33,9 @@ eval/
 # 确定性自检（不调 LLM、不联网）：验证假数据注入生效
 .venv/bin/python eval/harness.py --self-test
 
-# 全量评测（样本集就绪后接入，会调 DeepSeek）
+# 校验样本（不调 LLM）：看条数、分类统计、查重复 id
+.venv/bin/python eval/harness.py --check-cases eval/fixtures/b_cases.jsonl
+
+# 全量评测（judge/redline 就绪后接入，会调 DeepSeek）
 .venv/bin/python eval/harness.py --cases eval/fixtures/b_cases.jsonl --out eval/results.jsonl
 ```
