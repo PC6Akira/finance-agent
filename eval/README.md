@@ -19,9 +19,9 @@
 eval/
 ├── harness.py              # 注入假工具 → 跑 run() → 收集输出 + 工具调用
 ├── gen_a_cases.py          # 生成 A 层构造样本（确定性，数值取自假宇宙）
-├── judge.py                # LLM-as-judge 判"含错"（待建）
-├── redline.py              # 红线确定性检测（待建）
-├── report.py               # 汇总 5 指标（待建）
+├── judge.py                # LLM-as-judge 判"含错"（比 verifier 更强的清单式提示词）
+├── redline.py              # 红线确定性检测（关键词黑名单 + 预测扩展表 + 回撤放行）
+├── report.py               # 跑 A+B 层，汇总 5 指标，打印 + 落盘 JSONL/CSV
 └── fixtures/
     ├── universe.json         # 6 只假基金宇宙（地面真值来源）
     ├── b_cases.jsonl         # B 层 100 条端到端样本
@@ -40,6 +40,12 @@ eval/
 # 重新生成 A 层构造样本（改假宇宙后需重跑）
 .venv/bin/python eval/gen_a_cases.py
 
-# 全量评测（judge/redline 就绪后接入，会调 DeepSeek）
-.venv/bin/python eval/harness.py --cases eval/fixtures/b_cases.jsonl --out eval/results.jsonl
+# 全量评测（会调大量 DeepSeek，产出 5 指标 + results/*.jsonl|csv）
+.venv/bin/python eval/report.py
+
+# 冒烟：只跑前 3 条 B 层
+.venv/bin/python eval/report.py --b-only --limit 3
+
+# 只跑 A 层（precision/recall）
+.venv/bin/python eval/report.py --a-only
 ```
