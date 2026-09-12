@@ -70,22 +70,31 @@ def _regenerate(answer: str, data_text: str, issues: list[str]) -> str:
     return get_llm().invoke(prompt).content
 
 
-def verify_and_correct(answer: str, tool_outputs: list[tuple[str, str]]) -> str:
-    """校验最终回答，必要时重答一次；仍失败则标注 ⚠️。"""
+def verify_with_verdict(answer: str, tool_outputs: list[tuple[str, str]]) -> tuple[str, bool, list[str]]:
+    """校验最终回答，必要时重答一次；仍失败则标注 ⚠️。
+
+    返回 (最终文本, 是否通过, 最终 issues)。评测用：暴露原始判定。
+    """
     if not tool_outputs:
-        return answer
+        return answer, True, []
     data_text = _format_tool_outputs(tool_outputs)
 
     ok, issues = _check(answer, data_text)
     if ok:
         logger.info("事实校验：通过")
-        return answer
+        return answer, True, []
 
     logger.warning(f"事实校验发现问题，重答：{issues}")
     corrected = _regenerate(answer, data_text, issues)
     ok2, issues2 = _check(corrected, data_text)
     if ok2:
         logger.info("事实校验：重答后通过")
-        return corrected
+        return corrected, True, []
     logger.warning(f"事实校验：重答后仍有问题，标注：{issues2}")
-    return corrected + "\n\n⚠️ 部分数据待核实：" + "；".join(issues2)
+    return corrected + "\n\n⚠️ 部分数据待核实：" + "；".join(issues2), False, issues2
+
+
+def verify_and_correct(answer: str, tool_outputs: list[tuple[str, str]]) -> str:
+    """校验最终回答（向后兼容薄包装：只返回文本）。"""
+    text, _, _ = verify_with_verdict(answer, tool_outputs)
+    return text

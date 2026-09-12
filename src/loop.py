@@ -49,7 +49,7 @@ def _handle_tool_call(tc: dict, ask_user) -> str:
     return _call_tool_safe(tc["name"], tc["args"])  # 🟢 放行
 
 
-def run(goal: str, history: list[tuple[str, str]] | None = None, ask_user=input) -> str:
+def run(goal: str, history: list[tuple[str, str]] | None = None, ask_user=input, enable_verifier: bool = True) -> str:
     """执行一个目标（可带多轮对话历史），返回带免责声明的最终结果。"""
     register_guard_hooks()
     logger.info(f"任务开始：{goal[:80]}")
@@ -67,7 +67,8 @@ def run(goal: str, history: list[tuple[str, str]] | None = None, ask_user=input)
 
         if not resp.tool_calls:  # ① 终止：模型给出最终回答
             logger.info("任务完成（模型给出最终回答）")
-            return finalize(verify_and_correct(resp.content, tool_outputs))
+            final_text = verify_and_correct(resp.content, tool_outputs) if enable_verifier else resp.content
+            return finalize(final_text)
 
         for tc in resp.tool_calls:
             logger.info(f"调用工具：{tc['name']}")
@@ -79,7 +80,8 @@ def run(goal: str, history: list[tuple[str, str]] | None = None, ask_user=input)
     logger.warning(f"达到最大步数 {settings.max_steps}，强制汇总")
     messages.append(HumanMessage(content="已达到最大步数，请基于已有信息给出最终汇总。"))
     final = llm.invoke(messages)
-    return finalize(verify_and_correct(final.content, tool_outputs))
+    final_text = verify_and_correct(final.content, tool_outputs) if enable_verifier else final.content
+    return finalize(final_text)
 
 
 def main() -> None:
