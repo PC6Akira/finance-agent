@@ -34,6 +34,12 @@ class Settings(BaseModel):
     # 输出
     disclaimer: str = "本内容仅供参考，不构成任何投资建议。"
 
+    # 服务启动（Gradio，部署时通过环境变量覆盖）
+    gradio_server_name: str = "127.0.0.1"
+    gradio_server_port: int = 7860
+    gradio_auth_username: str = ""
+    gradio_auth_password: str = ""
+
 
 def _get(node: dict, dotted: str, default=None):
     """按 'a.b.c' 路径取嵌套字典值，缺失返回 default。"""
@@ -60,6 +66,10 @@ def load_settings() -> Settings:
         chroma_path=BASE_DIR / _get(raw, "storage.chroma_path", "chroma_db"),
         max_steps=_get(raw, "goal_loop.max_steps", 12),
         disclaimer=_get(raw, "output.disclaimer", "本内容仅供参考，不构成任何投资建议。"),
+        gradio_server_name=os.getenv("GRADIO_SERVER_NAME", "127.0.0.1"),
+        gradio_server_port=int(os.getenv("GRADIO_SERVER_PORT", "7860")),
+        gradio_auth_username=os.getenv("GRADIO_AUTH_USERNAME", ""),
+        gradio_auth_password=os.getenv("GRADIO_AUTH_PASSWORD", ""),
     )
 
 

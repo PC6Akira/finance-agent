@@ -11,7 +11,9 @@ import plotly.graph_objects as go
 from data_sources import fund as fund_ds
 from data_sources import news as news_ds
 from data_sources import search as search_ds
+from db.database import init_db
 from src import auth, backtest, diagnosis, metrics, recommend, user
+from src.config import settings
 from src.loop import run
 
 # dataviz 参考调色板（light 模式）
@@ -293,4 +295,12 @@ with gr.Blocks(title="基金投研 Agent 测试台") as demo:
 
 
 if __name__ == "__main__":
-    demo.launch(server_name="127.0.0.1")
+    init_db()
+    auth_guard = None
+    if settings.gradio_auth_username and settings.gradio_auth_password:
+        auth_guard = [(settings.gradio_auth_username, settings.gradio_auth_password)]
+    demo.launch(
+        server_name=settings.gradio_server_name,
+        server_port=settings.gradio_server_port,
+        auth=auth_guard,
+    )
