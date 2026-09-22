@@ -17,8 +17,8 @@
 ## 一、硬性改造（无论哪种上线都要）
 
 ### 1. Web 层
-- [ ] Gradio 反代 + HTTPS（当前 `app.py` 仅 `server_name="127.0.0.1"` 裸奔）
-- [ ] 访问控制：Gradio `auth=` 或 IP 白名单
+- [x] Gradio 反代 + HTTPS —— `deploy/nginx.conf` 模板 + `deploy/README.md` 步骤已提供（含 WebSocket 反代）；待服务器落地实测
+- [x] 访问控制：Gradio `auth=` 或 IP 白名单 —— 已支持 `GRADIO_AUTH_USERNAME/PASSWORD` 可选 Basic Auth（`app.py`）
 
 ### 2. 密钥与成本
 - [ ] API key 走环境变量注入（不打进镜像/不进 git，当前 `.env` 明文）
