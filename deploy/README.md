@@ -27,10 +27,18 @@ cp .env.example .env
 > 保持默认 `GRADIO_SERVER_NAME=127.0.0.1`（不设 0.0.0.0），让 Nginx 对外。
 
 ### 3. 申请 HTTPS 证书
+
+> 不用去任何网站申请、不花钱：Let's Encrypt 免费证书，由 `certbot` 全自动签发并续期。
+> 唯一前置是「域名 A 记录已指向本机公网 IP」（见上方「前置」）。
+
 ```bash
+# 安装 certbot（Ubuntu/Debian）
+sudo apt install certbot python3-certbot-nginx
+
+# 一条命令：自动验证域名归属 → 签发 → 写入 /etc/letsencrypt/live/你的域名/
 sudo certbot --nginx -d your-domain.com
 ```
-证书落在 `/etc/letsencrypt/live/your-domain.com/`，之后 `certbot renew` 自动续期。
+证书落在 `/etc/letsencrypt/live/your-domain.com/`，有效期 90 天；certbot 自带自动续期（systemd timer），不用手动管。可跑 `sudo certbot renew --dry-run` 验证续期正常。
 
 ### 4. 放 Nginx 反代配置
 ```bash
