@@ -26,6 +26,8 @@ SURFACE = "#fcfcfb"
 
 YEAR = str(datetime.now().year)
 
+CONCURRENCY_LIMIT = 10  # 最大并发用户数（Gradio 默认每事件串行，这里放开）
+
 
 # --- 图表 ---
 
@@ -299,6 +301,7 @@ with gr.Blocks(title="基金投研 Agent 测试台") as demo:
 
 if __name__ == "__main__":
     init_db()
+    demo.queue(default_concurrency_limit=CONCURRENCY_LIMIT)
     auth_guard = None
     if settings.gradio_auth_username and settings.gradio_auth_password:
         auth_guard = [(settings.gradio_auth_username, settings.gradio_auth_password)]
