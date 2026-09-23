@@ -52,3 +52,8 @@ def incr(key: str, ttl: int) -> int:
         return int(count)
 
     return _safe(_do, default=0)
+
+
+def delete(key: str) -> None:
+    """删除 key。Redis 挂则静默失败。"""
+    _safe(lambda: _client.delete(key))
