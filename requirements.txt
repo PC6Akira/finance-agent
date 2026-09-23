@@ -32,3 +32,6 @@ plotly
 
 # --- 认证 ---
 bcrypt
+
+# --- Redis（缓存 + 限流）---
+redis==8.1.0

@@ -28,6 +28,9 @@ class Settings(BaseModel):
     db_path: Path = BASE_DIR / "db" / "finance.db"
     chroma_path: Path = BASE_DIR / "chroma_db"
 
+    # Redis（缓存 + 限流；连接失败自动降级，不影响业务）
+    redis_url: str = "redis://localhost:6379/0"
+
     # goal loop
     max_steps: int = 12
 
@@ -64,6 +67,7 @@ def load_settings() -> Settings:
         embedding_model=_get(raw, "embedding.model", "text-embedding-v3"),
         db_path=BASE_DIR / _get(raw, "storage.db_path", "db/finance.db"),
         chroma_path=BASE_DIR / _get(raw, "storage.chroma_path", "chroma_db"),
+        redis_url=os.getenv("REDIS_URL", "redis://localhost:6379/0"),
         max_steps=_get(raw, "goal_loop.max_steps", 12),
         disclaimer=_get(raw, "output.disclaimer", "本内容仅供参考，不构成任何投资建议。"),
         gradio_server_name=os.getenv("GRADIO_SERVER_NAME", "127.0.0.1"),
