@@ -12,7 +12,7 @@ from data_sources import fund as fund_ds
 from data_sources import news as news_ds
 from data_sources import search as search_ds
 from db.database import init_db
-from src import auth, backtest, diagnosis, metrics, recommend, user
+from src import auth, backtest, diagnosis, metrics, quota, recommend, user
 from src.config import settings
 from src.loop import run
 
@@ -191,6 +191,9 @@ def respond(message, history, username):
     message = (message or "").strip()
     if not message:
         return history, ""
+    ok, quota_msg = quota.consume(username)
+    if not ok:
+        return history, quota_msg
     past = user.recent_messages(username, limit=20)  # 最近 10 轮
     reply = run(message, history=past)
     user.add_message(username, "user", message)
