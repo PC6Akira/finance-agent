@@ -70,8 +70,11 @@ def _regenerate(answer: str, data_text: str, issues: list[str]) -> str:
     return get_llm().invoke(prompt).content
 
 
-def verify_with_verdict(answer: str, tool_outputs: list[tuple[str, str]]) -> tuple[str, bool, list[str]]:
+def verify_with_verdict(answer: str, tool_outputs: list[tuple[str, str]], regenerate: bool = True) -> tuple[str, bool, list[str]]:
     """校验最终回答，必要时重答一次；仍失败则标注 ⚠️。
+
+    regenerate=True（默认）：发现问题后重答改写（旧行为，可能引入新错）。
+    regenerate=False：只标注不改写——返回原文 + ⚠️ 待核实，避免重答引入新错。
 
     返回 (最终文本, 是否通过, 最终 issues)。评测用：暴露原始判定。
     """
@@ -84,6 +87,10 @@ def verify_with_verdict(answer: str, tool_outputs: list[tuple[str, str]]) -> tup
         logger.info("事实校验：通过")
         return answer, True, []
 
+    if not regenerate:
+        logger.warning(f"事实校验发现问题，仅标注不重答：{issues}")
+        return answer + "\n\n⚠️ 部分数据待核实：" + "；".join(issues), False, issues
+
     logger.warning(f"事实校验发现问题，重答：{issues}")
     corrected = _regenerate(answer, data_text, issues)
     ok2, issues2 = _check(corrected, data_text)
@@ -94,7 +101,7 @@ def verify_with_verdict(answer: str, tool_outputs: list[tuple[str, str]]) -> tup
     return corrected + "\n\n⚠️ 部分数据待核实：" + "；".join(issues2), False, issues2
 
 
-def verify_and_correct(answer: str, tool_outputs: list[tuple[str, str]]) -> str:
+def verify_and_correct(answer: str, tool_outputs: list[tuple[str, str]], regenerate: bool = True) -> str:
     """校验最终回答（向后兼容薄包装：只返回文本）。"""
-    text, _, _ = verify_with_verdict(answer, tool_outputs)
+    text, _, _ = verify_with_verdict(answer, tool_outputs, regenerate=regenerate)
     return text

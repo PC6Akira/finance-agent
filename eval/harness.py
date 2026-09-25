@@ -94,7 +94,7 @@ def build_fake_tools(universe: dict) -> dict:
 
 # ---------- patch + 运行 ----------
 
-def run_case(goal: str, universe: dict, enable_verifier: bool = True) -> dict:
+def run_case(goal: str, universe: dict, enable_verifier: bool = True, verifier_regenerate: bool = True) -> dict:
     """用假宇宙跑一个 goal，返回 {goal, enable_verifier, output, tool_calls}。
 
     注入方式：替换 tools.registry._TOOLS（loop 的 list_tools/call_tool 读它时生效），
@@ -113,11 +113,11 @@ def run_case(goal: str, universe: dict, enable_verifier: bool = True) -> dict:
     registry._TOOLS = fake_tools
     loop_mod.call_tool = recording_call
     try:
-        output = loop_mod.run(goal, enable_verifier=enable_verifier)
+        output = loop_mod.run(goal, enable_verifier=enable_verifier, verifier_regenerate=verifier_regenerate)
     finally:
         registry._TOOLS = orig_tools
         loop_mod.call_tool = orig_call
-    return {"goal": goal, "enable_verifier": enable_verifier, "output": output, "tool_calls": calls}
+    return {"goal": goal, "enable_verifier": enable_verifier, "verifier_regenerate": verifier_regenerate, "output": output, "tool_calls": calls}
 
 
 def run_cases(cases: list[dict], universe: dict, enable_verifier: bool = True) -> list[dict]:
