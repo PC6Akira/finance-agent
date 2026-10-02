@@ -7,6 +7,7 @@
 """
 import functools
 import inspect
+import io
 import json
 
 import pandas as pd
@@ -36,7 +37,7 @@ def _deserialize(text: str):
     """按类型标记还原返回值。"""
     envelope = json.loads(text)
     if envelope["type"] == "df":
-        return pd.read_json(envelope["data"], orient="table")
+        return pd.read_json(io.StringIO(envelope["data"]), orient="table")
     return envelope["data"]
 
 
