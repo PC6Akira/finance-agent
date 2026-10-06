@@ -12,6 +12,7 @@ from fastapi import FastAPI
 from db.database import init_db
 from server.auth_api import router as auth_router
 from server.chat_api import router as chat_router
+from server.fund_api import router as fund_router
 from server.holding_api import router as holding_router
 
 
@@ -26,6 +27,7 @@ app = FastAPI(title="基金投研 Agent 后端", version="0.1.0", lifespan=lifes
 app.include_router(auth_router)
 app.include_router(chat_router)
 app.include_router(holding_router)
+app.include_router(fund_router)
 
 
 @app.get("/api/health")
