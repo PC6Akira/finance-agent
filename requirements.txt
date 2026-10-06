@@ -35,3 +35,7 @@ bcrypt
 
 # --- Redis（缓存 + 限流）---
 redis==8.1.0
+
+# --- Web 服务（FastAPI 后端 + 静态前端）---
+fastapi
+uvicorn[standard]

@@ -43,6 +43,10 @@ class Settings(BaseModel):
     gradio_auth_username: str = ""
     gradio_auth_password: str = ""
 
+    # 服务启动（FastAPI，部署时通过环境变量覆盖）
+    server_host: str = "127.0.0.1"
+    server_port: int = 8000
+
 
 def _get(node: dict, dotted: str, default=None):
     """按 'a.b.c' 路径取嵌套字典值，缺失返回 default。"""
@@ -74,6 +78,8 @@ def load_settings() -> Settings:
         gradio_server_port=int(os.getenv("GRADIO_SERVER_PORT", "7860")),
         gradio_auth_username=os.getenv("GRADIO_AUTH_USERNAME", ""),
         gradio_auth_password=os.getenv("GRADIO_AUTH_PASSWORD", ""),
+        server_host=os.getenv("SERVER_HOST", "127.0.0.1"),
+        server_port=int(os.getenv("SERVER_PORT", "8000")),
     )
 
 
