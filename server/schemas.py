@@ -27,3 +27,16 @@ class ChatIn(BaseModel):
 
 class ChatOut(BaseModel):
     reply: str
+
+
+class AddHoldingIn(BaseModel):
+    fund_code: str
+    amount: float
+    cost: float | None = None
+
+
+class HoldingOut(BaseModel):
+    fund_code: str
+    fund_name: str | None = None
+    amount: float | None = None
+    cost: float | None = None
