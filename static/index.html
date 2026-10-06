@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>基金投研 Agent</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <!-- 登录 / 注册视图 -->
+  <div id="login-view" class="auth-wrap">
+    <div class="auth-card">
+      <h1>基金投研 Agent</h1>
+      <p class="muted">只做信息汇总、数据整理与风险提示，不构成任何投资建议</p>
+      <div class="field">
+        <input id="auth-username" placeholder="用户名" autocomplete="username">
+      </div>
+      <div class="field">
+        <input id="auth-password" type="password" placeholder="密码" autocomplete="current-password">
+      </div>
+      <div class="auth-msg" id="auth-msg"></div>
+      <div class="auth-btns">
+        <button id="btn-login" class="primary">登录</button>
+        <button id="btn-register" class="ghost">注册</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 主应用视图 -->
+  <div id="app-view" hidden>
+    <header class="topbar">
+      <div class="brand">基金投研 Agent</div>
+      <nav class="tabs">
+        <button class="tab active" data-tab="chat">对话</button>
+        <button class="tab" data-tab="holdings">我的持仓</button>
+        <button class="tab" data-tab="fund">基金数据</button>
+        <button class="tab" data-tab="datasource">数据源测试</button>
+      </nav>
+      <div class="user">
+        <span id="user-name"></span>
+        <button id="btn-logout" class="ghost">退出</button>
+      </div>
+    </header>
+
+    <main>
+      <!-- 对话 -->
+      <section id="tab-chat" class="panel">
+        <div class="rec-row" id="rec-row"></div>
+        <div id="chat-log" class="chat-log"></div>
+        <div class="chat-input">
+          <textarea id="chat-input" placeholder="输入你的问题，例如：我持有的基金昨天涨跌多少？"></textarea>
+          <button id="btn-send" class="primary">发送</button>
+        </div>
+      </section>
+
+      <!-- 我的持仓 -->
+      <section id="tab-holdings" class="panel" hidden>
+        <div class="add-row">
+          <input id="h-code" placeholder="基金代码">
+          <input id="h-amount" type="number" placeholder="持有金额">
+          <input id="h-cost" type="number" placeholder="成本价（可空）">
+          <button id="btn-add-holding" class="primary">添加持仓</button>
+        </div>
+        <div class="msg" id="holding-msg"></div>
+        <table class="table" id="holdings-table">
+          <thead><tr><th>基金代码</th><th>基金名称</th><th>持有金额</th><th>成本价</th><th></th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <!-- 基金数据 -->
+      <section id="tab-fund" class="panel" hidden>
+        <div class="add-row">
+          <input id="f-code" placeholder="基金代码" value="110022">
+          <button id="btn-query-fund" class="primary">查询</button>
+        </div>
+        <div class="msg" id="fund-msg"></div>
+        <div class="charts">
+          <div class="chart-box">
+            <div class="chart-title">单位净值走势</div>
+            <div id="chart-nav" class="chart"></div>
+          </div>
+          <div class="chart-box">
+            <div class="chart-title">行业配置（最新报告期）</div>
+            <div id="chart-industry" class="chart"></div>
+          </div>
+        </div>
+        <div class="chart-box wide">
+          <div class="chart-title">回测净值曲线（近 3 年，归一化为收益率 %）</div>
+          <div id="chart-backtest" class="chart"></div>
+        </div>
+        <div class="two-col">
+          <div>
+            <div class="chart-title">前十大持仓（最新季度）</div>
+            <table class="table" id="fund-holdings-table">
+              <thead><tr><th>股票代码</th><th>股票名称</th><th>占净值比例</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+          <div>
+            <div class="chart-title">风险点</div>
+            <div class="risk-list" id="risk-points"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 数据源测试 -->
+      <section id="tab-datasource" class="panel" hidden>
+        <div class="add-row">
+          <input id="ds-code" placeholder="基金代码" value="110022">
+        </div>
+        <div class="ds-btns">
+          <button data-ds="nav">净值</button>
+          <button data-ds="holdings">持仓</button>
+          <button data-ds="industry">行业配置</button>
+          <button data-ds="reports">报告公告</button>
+          <button data-ds="cls">财联社舆情</button>
+          <button data-ds="personnel">人事公告</button>
+          <button data-ds="dividend">分红公告</button>
+        </div>
+        <div class="add-row">
+          <input id="ds-query" placeholder="搜索关键词" value="基金经理访谈">
+          <button id="btn-search" class="primary">搜索</button>
+        </div>
+        <div class="msg" id="ds-msg"></div>
+        <div id="ds-table-wrap"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/vendor/echarts.min.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>
