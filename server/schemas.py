@@ -19,3 +19,11 @@ class TokenOut(BaseModel):
 
 class UserOut(BaseModel):
     username: str
+
+
+class ChatIn(BaseModel):
+    message: str
+
+
+class ChatOut(BaseModel):
+    reply: str

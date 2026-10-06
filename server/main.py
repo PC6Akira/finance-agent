@@ -11,6 +11,7 @@ from fastapi import FastAPI
 
 from db.database import init_db
 from server.auth_api import router as auth_router
+from server.chat_api import router as chat_router
 
 
 @asynccontextmanager
@@ -22,6 +23,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(title="基金投研 Agent 后端", version="0.1.0", lifespan=lifespan)
 
 app.include_router(auth_router)
+app.include_router(chat_router)
 
 
 @app.get("/api/health")
