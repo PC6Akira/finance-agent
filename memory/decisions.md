@@ -19,6 +19,7 @@
 - 2026-09-12 — 事实可靠性评测：**自研 harness**（monkeypatch 假数据注入）+ `report.py` 统计五指标，**不上可视化软件**
 - 2026-09-12 — 留存后续想法：用 **LangSmith** 查单条错误 run 的完整调用链路（调试用，暂不实施）
 - 2026-09-23 — 引入 **Redis**：只用「数据缓存 + 限流」——akshare 8 个数据源套 `@cached` 分档 TTL；登录失败 5 次锁 15 分钟；每用户额度 100 次/天 + 10 次/分；会话走 SQLite、LLM 语义缓存/任务队列/Chroma 后端跳过；Redis 挂时 fail-open 降级直连上游
+- 2026-10-06 — 引入 **FastAPI 后端 + 原生 JS 前端**：新增 `server/`（复用 `src/` 业务逻辑的 HTTP 传输层）+ `static/`（四 Tab 对齐原 Gradio），Gradio 测试台 `app.py` 保留并行但不再是默认入口。关键决策：①会话鉴权用 **Redis 不透明 token**（7 天 TTL，内存镜像兜底 fail-open）；②对话第一版 **同步返回**完整回答（SSE 流式后置）；③前端图表用 **ECharts 本地化**（不依赖外网 CDN），dataviz 调色板支持浅/深色；④静态页由 FastAPI 同源挂载（免 CORS）
 
 ## 待审核 / 待建 🔴（第一批剩余）
 
